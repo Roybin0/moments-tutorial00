@@ -17,7 +17,7 @@ import {
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
-const SignInForm = () => {
+function SignInForm() {
     const setCurrentUser = useSetCurrentUser();
 
     const [signInData, setSignInData] = useState({

@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -12,22 +12,22 @@ export const CurrentUserProvider = ({ children }) => {
 
     const handleMount = async () => {
         try {
-            const { data } = await axios.get('dj-rest-auth/user/')
-            setCurrentUser(data)
+            const { data } = await axios.get("dj-rest-auth/user/");
+            setCurrentUser(data);
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
-    }
+    };
 
     useEffect(() => {
         handleMount();
-    }, [])
+    }, []);
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
-            <SetCurrentUserContext value={setCurrentUser}>
+            <SetCurrentUserContext.Provider value={setCurrentUser}>
                 {children}
-            </SetCurrentUserContext>
+            </SetCurrentUserContext.Provider>
         </CurrentUserContext.Provider>
-    )
-}
+    );
+};

@@ -45,7 +45,7 @@ export const CurrentUserProvider = ({ children }) => {
             (err) => {
                 return Promise.reject(err);
             }
-        )
+        );
 
         axiosRes.interceptors.response.use(
             (response) => response,
@@ -66,7 +66,7 @@ export const CurrentUserProvider = ({ children }) => {
                 return Promise.reject(err)
             }
         )
-    }, [history])
+    }, [history]);
 
     return (
         <CurrentUserContext.Provider value={currentUser}>

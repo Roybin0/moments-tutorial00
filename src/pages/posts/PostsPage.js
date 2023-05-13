@@ -43,7 +43,7 @@ function PostsPage({ message, filter = "" }) {
     }, 1000);
 
     return () => {
-      clearTimeout(timer)
+      clearTimeout(timer);
     };
     
   }, [filter, query, pathname]);

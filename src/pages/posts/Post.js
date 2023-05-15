@@ -39,26 +39,26 @@ const Post = (props) => {
 
     const handleDelete = async () => {
         try {
-          await axiosRes.delete(`/posts/${id}`);
-          history.goBack();
+            await axiosRes.delete(`/posts/${id}`);
+            history.goBack();
         } catch (err) {
-          console.log(err);
+            // console.log(err);
         }
-      };
+    };
 
     const handleLike = async () => {
         try {
-            const {data} = await axiosRes.post('/likes/', {post:id});
+            const { data } = await axiosRes.post('/likes/', { post: id });
             setPosts((prevPosts) => ({
                 ...prevPosts,
                 results: prevPosts.results.map((post) => {
                     return post.id === id
-                    ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
-                    : post;
+                        ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
+                        : post;
                 }),
             }));
-        } catch(err) {
-            console.log(err)
+        } catch (err) {
+            // console.log(err)
         }
     };
 
@@ -69,12 +69,12 @@ const Post = (props) => {
                 ...prevPosts,
                 results: prevPosts.results.map((post) => {
                     return post.id === id
-                    ? { ...post, likes_count: post.likes_count - 1, like_id: null }
-                    : post;
+                        ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+                        : post;
                 }),
             }));
-        } catch(err) {
-            console.log(err)
+        } catch (err) {
+            // console.log(err)
         }
     };
 
@@ -90,7 +90,7 @@ const Post = (props) => {
                     <div className='d-flex align-items-center'>
                         <span>{updated_at}</span>
                         {is_owner && postPage && (
-                            <MoreDropdown 
+                            <MoreDropdown
                                 handleEdit={handleEdit}
                                 handleDelete={handleDelete}
                             />

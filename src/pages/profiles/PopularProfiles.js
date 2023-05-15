@@ -20,17 +20,17 @@ const PopularProfiles = ({ mobile }) => {
           {mobile ? (
             <div className="d-flex justify-content-around">
               {popularProfiles.results.slice(0, 4).map((profile) => (
-                <Profile key={profile.id} profile={profile} mobile />
+                <Profile rowkey={profile.id} profile={profile} mobile />
               ))}
             </div>
           ) : (
             popularProfiles.results.map((profile) => (
-              <Profile key={profile.id} profile={profile} />
+              <Profile rowkey={profile.id} profile={profile} />
             ))
           )}
         </>
       ) : (
-        <Asset key="spinner" spinner />
+        <Asset spinner />
       )}
     </Container>
   );
